@@ -3,6 +3,9 @@
 public class PlayerMovement : MonoBehaviour
 {
 	public float speed = 6f;
+	public float turnSpeed = 90f;
+	float rotation = 0f;
+	float rotationOffset = 0;
 	Vector3 movement;
 	Animator anim;
 	Rigidbody playerRigidBody;
@@ -29,10 +32,12 @@ public class PlayerMovement : MonoBehaviour
 	void Move(float h, float v)
 	{
 		movement.Set (h, 0f, v);
+		movement = Quaternion.Euler (0, rotation, 0) * movement;
 		movement = movement.normalized * speed * Time.deltaTime;
 		playerRigidBody.MovePosition (transform.position + movement);
 	}
 
+	/* This is implemented if using a third-person view point
 	void Turning()
 	{
 		Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -45,6 +50,25 @@ public class PlayerMovement : MonoBehaviour
 			Quaternion newRotatiion = Quaternion.LookRotation(playerToMouse);
 			playerRigidBody.MoveRotation(newRotatiion);
 		}
+	}*/
+
+	/** Turning for first-person
+	 * 	Tyler McCreary
+	 */
+	void Turning()
+	{
+		float mouseInput = Input.GetAxis ("Mouse X");
+		if (mouseInput > 0.2f)
+		{
+			rotation = rotation + (Time.deltaTime * turnSpeed);
+			transform.RotateAround (transform.position, transform.up, Time.deltaTime * turnSpeed);
+		}
+		else if (mouseInput < -0.02f)
+		{
+			rotation = rotation - (Time.deltaTime * turnSpeed);
+			transform.RotateAround (transform.position, transform.up, Time.deltaTime * -turnSpeed);
+		}
+
 	}
 
 	void Animating(float h, float v)
