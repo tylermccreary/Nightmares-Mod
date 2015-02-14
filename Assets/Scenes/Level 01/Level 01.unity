@@ -628,6 +628,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1442414355}
   m_GameObject: {fileID: 155441000}
   m_Mesh: {fileID: 4300000, guid: e03ae68b9fdf406439d6f7e50456dc75, type: 3}
+--- !u!1 &205856978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 205856979}
+  m_Layer: 0
+  m_Name: NukeSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 120240766, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &205856979
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 205856978}
+  m_LocalRotation: {x: 0, y: .906307817, z: 0, w: .42261824}
+  m_LocalPosition: {x: 4.48000002, y: 1.5, z: 5.5999999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1 &221066164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1445,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512f17dcd96930b41b0ebb0e29aefcdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nuke: {fileID: 157182, guid: ccc3679d7a4c7214abbf9778949a75e4, type: 2}
+  spawnPoints:
+  - {fileID: 205856979}
+  playerHealth: {fileID: 1470923598}
 --- !u!1 &496890832
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,11 @@ public class WaveManager : MonoBehaviour
 		private static int enemyCount;
 		private static int spawnAmount;
 		private static bool doneSpawning = false;
+		private static bool nukeForWave = false;
+		private const int ENEMIES_WARNING = 30;
+		public GameObject nuke;
+		public Transform[] spawnPoints;
+		public PlayerHealth playerHealth;
 		Text text;
 
 		void Awake ()
@@ -29,6 +34,17 @@ public class WaveManager : MonoBehaviour
 				if (deathCount >= enemyCount) {
 						nextWave ();
 				}
+				checkNuke ();
+		}
+
+		void checkNuke ()
+		{
+				if (nukeForWave == false && (spawnAmount - deathCount) >= ENEMIES_WARNING) {
+						Debug.Log ("hello");
+						nukeForWave = true;
+						int spawnPointIndex = Random.Range (0, spawnPoints.Length);
+						Instantiate (nuke, spawnPoints [spawnPointIndex].position, spawnPoints [spawnPointIndex].rotation);
+				}
 		}
 
 		public static int getWave ()
@@ -43,6 +59,7 @@ public class WaveManager : MonoBehaviour
 				enemyCount = enemyCount + 5;
 				spawnAmount = 0;
 				doneSpawning = false;
+				nukeForWave = false;
 		}
 
 		public static void countDeath ()
