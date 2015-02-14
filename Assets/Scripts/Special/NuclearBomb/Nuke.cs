@@ -31,7 +31,7 @@ public class Nuke : MonoBehaviour
 										}
 								}
 						}
-						ScoreManager.score += 200;
+						ScoreManager.addToScore(200);
 						Destroy (gameObject);
 				}
 		}

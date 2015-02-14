@@ -59,6 +59,7 @@ public class EnemyHealth : MonoBehaviour
     void Death ()
     {
         isDead = true;
+		WaveManager.countDeath();
 
         capsuleCollider.isTrigger = true;
 
@@ -74,7 +75,7 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
-        ScoreManager.score += scoreValue;
+        ScoreManager.addToScore(scoreValue);
         Destroy (gameObject, 2f);
     }
 }
