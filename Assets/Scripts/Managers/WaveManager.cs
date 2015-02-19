@@ -27,6 +27,7 @@ public class WaveManager : MonoBehaviour
 	
 		void Update ()
 		{
+		Debug.Log (spawnAmount + " " + deathCount);
 				text.text = "Wave: " + wave;
 				if (spawnAmount >= enemyCount) {
 						doneSpawning = true;
@@ -40,7 +41,6 @@ public class WaveManager : MonoBehaviour
 		void checkNuke ()
 		{
 				if (nukeForWave == false && (spawnAmount - deathCount) >= ENEMIES_WARNING) {
-						Debug.Log ("hello");
 						nukeForWave = true;
 						int spawnPointIndex = Random.Range (0, spawnPoints.Length);
 						Instantiate (nuke, spawnPoints [spawnPointIndex].position, spawnPoints [spawnPointIndex].rotation);

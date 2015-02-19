@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 	 */
 	void Turning()
 	{
-		float mouseInput = Input.GetAxis ("Mouse X");
+		float mouseInput = Input.GetAxis ("Mouse X") / 5f;
 		if (mouseInput > 0.02f)
 		{
 			rotation = rotation + (Time.deltaTime * turnSpeed);
